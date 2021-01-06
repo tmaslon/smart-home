@@ -40,6 +40,13 @@ inhabitant_movement   = timeseries(inhabitant);
 inhabitant_gps = zeros(1,workSchedule);
 inhabitant_gps = [inhabitant_gps, linspace(0,1,driveSchedule)];
 inhabitant_gps = [inhabitant_gps, zeros(1, 14*60/timeStep)];
+
+if days>1
+    inhabitant_temp = inhabitant_gps;
+    for i=1:days
+        inhabitant_gps = [inhabitant_gps, inhabitant_temp];
+    end
+end
 inhabitant_gps = timeseries(inhabitant_gps);
 
 % simulated rain ----------------------------------------
