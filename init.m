@@ -52,13 +52,13 @@ inhabitant_gps = timeseries(inhabitant_gps);
 % simulated rain ----------------------------------------
 rain_prediction = [];
 if days<3
-    rain_prediction = timeseries(zeros(1, intervals));
+    rain_prediction = timeseries(ones(1, intervals));
 else
     for i=1:days
         if mod(i, 4) == 0
-            rain_prediction = [rain_prediction, ones(1, stepsInDay)];
-        else
             rain_prediction = [rain_prediction, zeros(1, stepsInDay)];
+        else
+            rain_prediction = [rain_prediction, ones(1, stepsInDay)];
         end
     end
     rain_prediction = timeseries(rain_prediction);
